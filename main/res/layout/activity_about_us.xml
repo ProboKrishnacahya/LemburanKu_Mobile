@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".about_us">
+
+    <ScrollView
+        android:id="@+id/about_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/about_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/about_textView_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:fontFamily="@font/titillium_web_bold"
+                android:text="About Us"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.01" />
+
+            <ImageView
+                android:id="@+id/about_imageView_logo"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_toolbar"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/splash" />
+
+            <TextView
+                android:id="@+id/about_textView_aplikasi_h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/titillium_web_bold"
+                android:text="Tentang Aplikasi"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/about_toolbar"
+                app:layout_constraintHorizontal_bias="0.11
+
+"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_imageView_logo" />
+
+            <TextView
+                android:id="@+id/about_textView_aplikasi_p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/work_sans_medium"
+                android:lineSpacingExtra="2.5sp"
+                android:paddingLeft="30dp"
+                android:paddingTop="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="30dp"
+                android:text="LemburanKu adalah aplikasi yang dapat menjadi solusi bagi pengguna untuk melakukan penghitungan sekaligus menyimpan data lembur Karyawan. \n\nPengguna dapat menambahkan, mengubah, menampilkan, dan menghapus data tersebut berdasarkan informasi laporan lembur yang dimasukkan. \n\nAturan penghitungan lembur yang digunakan oleh LemburanKu yaitu berdasarkan ketentuan yang berlaku dari Kementerian Ketenagakerjaan Republik Indonesia (KEP. 102/MEN/VI/2004 Kemnaker)."
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_textView_aplikasi_h"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/about_textView_kreator_h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/titillium_web_bold"
+                android:text="Oleh"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.085"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_textView_aplikasi_p" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/about_cardView1"
+                android:layout_width="390dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="55dp"
+                android:translationZ="-5dp"
+                app:cardBackgroundColor="@color/colorCard"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_textView_aplikasi_p">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/about_imageView_kreator1"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/kreator1" />
+
+                    <TextView
+                        android:id="@+id/about_textView_nama1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="Nathanael Abel Arianto"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/about_imageView_kreator1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/about_imageView_gmail1"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintStart_toEndOf="@+id/about_imageView_kreator1"
+                        app:layout_constraintTop_toBottomOf="@+id/about_textView_nama1"
+                        app:srcCompat="@drawable/gmail" />
+
+                    <ImageView
+                        android:id="@+id/about_imageView_linkedin1"
+                        android:layout_width="30dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="@+id/about_imageView_gmail1"
+                        app:layout_constraintTop_toBottomOf="@+id/about_imageView_gmail1"
+                        app:srcCompat="@drawable/linkedin" />
+
+                    <ImageView
+                        android:id="@+id/about_imageView_github1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/about_imageView_linkedin1"
+                        app:layout_constraintTop_toBottomOf="@+id/about_imageView_linkedin1"
+                        app:srcCompat="@drawable/github" />
+
+                    <TextView
+                        android:id="@+id/about_textView_gmail1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="nathanaelabel84@gmail.com"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textColorLink="@color/colorTextPrimary"
+                        android:textIsSelectable="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/about_imageView_gmail1"
+                        app:layout_constraintTop_toBottomOf="@+id/about_textView_nama1" />
+
+                    <TextView
+                        android:id="@+id/about_textView_linkedin1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="Nathanael Abel Arianto"
+                        android:textColor="@color/colorTextPrimary"
+                        app:layout_constraintEnd_toEndOf="@+id/about_textView_gmail1"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/about_textView_gmail1"
+                        app:layout_constraintTop_toBottomOf="@+id/about_textView_gmail1" />
+
+                    <TextView
+                        android:id="@+id/about_textView_github1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="17dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="Maumau20"
+                        android:textColor="@color/colorTextPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/about_textView_linkedin1"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/about_textView_gmail1"
+                        app:layout_constraintTop_toBottomOf="@+id/about_textView_linkedin1" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/about_cardView2"
+                android:layout_width="390dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="20dp"
+                android:translationZ="-5dp"
+                app:cardBackgroundColor="@color/colorCard"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/about_cardView1"
+                app:layout_constraintStart_toStartOf="@+id/about_cardView1"
+                app:layout_constraintTop_toBottomOf="@+id/about_cardView1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/about_imageView_kreator2"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/kreator2" />
+
+                    <TextView
+                        android:id="@+id/about_textView_nama2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="Probo Krishnacahya"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/about_imageView_kreator2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/about_imageView_gmail2"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintStart_toEndOf="@+id/about_imageView_kreator2"
+                        app:layout_constraintTop_toBottomOf="@+id/about_textView_nama2"
+                        app:srcCompat="@drawable/gmail" />
+
+                    <ImageView
+                        android:id="@+id/about_imageView_linkedin2"
+                        android:layout_width="30dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="@+id/about_imageView_gmail2"
+                        app:layout_constraintTop_toBottomOf="@+id/about_imageView_gmail2"
+                        app:srcCompat="@drawable/linkedin" />
+
+                    <ImageView
+                        android:id="@+id/about_imageView_github2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/about_imageView_linkedin2"
+                        app:layout_constraintTop_toBottomOf="@+id/about_imageView_linkedin2"
+                        app:srcCompat="@drawable/github" />
+
+                    <TextView
+                        android:id="@+id/about_textView_gmail2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="55dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="prob.krshn@gmail.com"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textColorLink="@color/colorTextPrimary"
+                        android:textIsSelectable="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/about_imageView_gmail2"
+                        app:layout_constraintTop_toBottomOf="@+id/about_textView_nama2" />
+
+                    <TextView
+                        android:id="@+id/about_textView_linkedin2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="Probo Krishnacahya"
+                        android:textColor="@color/colorTextPrimary"
+                        app:layout_constraintEnd_toEndOf="@+id/about_textView_gmail2"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/about_textView_gmail2"
+                        app:layout_constraintTop_toBottomOf="@+id/about_textView_gmail2" />
+
+                    <TextView
+                        android:id="@+id/about_textView_github2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="17dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:text="cahyaa5758"
+                        android:textColor="@color/colorTextPrimary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/about_textView_linkedin2"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/about_textView_gmail2"
+                        app:layout_constraintTop_toBottomOf="@+id/about_textView_linkedin2" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/about_textView_copyright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/titillium_web_bold"
+                android:text="© Copyright 2021, LemburanKu  |  App Version: 1.0"
+                android:textColor="@color/colorTextPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/about_cardView2"
+                app:layout_constraintStart_toStartOf="@+id/about_cardView2"
+                app:layout_constraintTop_toBottomOf="@+id/about_cardView2"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
