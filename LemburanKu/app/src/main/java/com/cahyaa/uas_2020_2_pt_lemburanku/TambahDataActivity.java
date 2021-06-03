@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -26,6 +28,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import model.Data;
 
@@ -37,9 +40,9 @@ public class TambahDataActivity extends AppCompatActivity {
     private EditText tambahdata_gaji, tambahdata_calendar;
     private TextInputLayout tambahdata_jamLembur, tambahdata_keterangan;
     private Button tambahdata_saveButton;
-    private String jenis_hari;
+    private String jenis_hari, tanggal;
     private Double gajiPerJam;
-    private int gajiPerBulan, jumlah_jam, total_upah;
+    private int gajiPerBulan, total_upah;
 
     Calendar calendar = Calendar.getInstance();
 
@@ -68,79 +71,12 @@ public class TambahDataActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.tambahdata_hariBiasa) {
                     jenis_hari = "Hari kerja biasa";
-
-                    //Testing..
-                    if (jumlah_jam != 0) {
-                        jumlah_jam = Integer.parseInt(tambahdata_jamLembur.getEditText().getText().toString().trim());
-                        if (jumlah_jam > 0 || jumlah_jam <= 3) {
-                            gajiPerBulan = Integer.parseInt(tambahdata_gaji.getEditableText().toString().trim());
-                            gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
-
-                            if (jumlah_jam == 1) {
-                                total_upah = (int) (gajiPerJam * (double) 1.5);
-                            } else if (jumlah_jam == 2) {
-                                total_upah = (int) ((gajiPerJam * (double) 1.5) + (gajiPerJam * 2));
-                            } else if (jumlah_jam == 3) {
-                                total_upah = (int) ((gajiPerJam * (double) 1.5) + (gajiPerJam * 2));
-                            }
-
-                        } else {
-                            tambahdata_jamLembur.setError("Jam lembur hari kerja biasa maksimal 1 s.d. 3 jam");
-                        }
-                    }
-                    //Ends here..
-
                 } else if (checkedId == R.id.tambahdata_hariTerpendek) {
                     jenis_hari = "Hari libur terpendek";
-                    if (R.id.tambahdata_jamLembur >= 5 || R.id.tambahdata_jamLembur <= 8) {
-                        gajiPerBulan = R.id.tambahdata_gaji;
-                        gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
-
-                        if (R.id.tambahdata_jamLembur == 5) {
-                            total_upah = (int) (gajiPerJam * 5 * 2);
-                        } else if (R.id.tambahdata_jamLembur == 6) {
-                            total_upah = (int) ((gajiPerJam * 5 * 2) + (gajiPerJam * 3));
-                        } else if (R.id.tambahdata_jamLembur == 7 || R.id.tambahdata_jamLembur == 8) {
-                            total_upah = (int) ((gajiPerJam * 5 * 2) + (gajiPerJam * 4));
-                        }
-
-                    } else {
-                        tambahdata_jamLembur.setError("Jam lembur hari libur terpendek maksimal 5 s.d. 8 jam");
-                    }
                 } else if (checkedId == R.id.tambahdata_hariLimaKerja) {
                     jenis_hari = "Hari libur (5 hari kerja/minggu)";
-                    if (R.id.tambahdata_jamLembur >= 8 || R.id.tambahdata_jamLembur <= 11) {
-                        gajiPerBulan = R.id.tambahdata_gaji;
-                        gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
-
-                        if (R.id.tambahdata_jamLembur == 8) {
-                            total_upah = (int) (gajiPerJam * 8 * 2);
-                        } else if (R.id.tambahdata_jamLembur == 9) {
-                            total_upah = (int) ((gajiPerJam * 8 * 2) + (gajiPerJam * 3));
-                        } else if (R.id.tambahdata_jamLembur == 10 || R.id.tambahdata_jamLembur == 11) {
-                            total_upah = (int) ((gajiPerJam * 8 * 2) + (gajiPerJam * 4));
-                        }
-
-                    } else {
-                        tambahdata_jamLembur.setError("Jam lembur hari libur 5 hari kerja/minggu maksimal 8 s.d. 11 jam");
-                    }
                 } else if (checkedId == R.id.tambahdata_hariEnamKerja) {
                     jenis_hari = "Hari libur (6 hari kerja/minggu)";
-                    if (R.id.tambahdata_jamLembur >= 7 || R.id.tambahdata_jamLembur <= 10) {
-                        gajiPerBulan = R.id.tambahdata_gaji;
-                        gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
-
-                        if (R.id.tambahdata_jamLembur == 7) {
-                            total_upah = (int) (gajiPerJam * 7 * 2);
-                        } else if (R.id.tambahdata_jamLembur == 8) {
-                            total_upah = (int) ((gajiPerJam * 7 * 2) + (gajiPerJam * 3));
-                        } else if (R.id.tambahdata_jamLembur == 9 || R.id.tambahdata_jamLembur == 10) {
-                            total_upah = (int) ((gajiPerJam * 7 * 2) + (gajiPerJam * 4));
-                        }
-
-                    } else {
-                        tambahdata_jamLembur.setError("Jam lembur hari libur 6 hari kerja/minggu maksimal 7 s.d. 10 jam");
-                    }
                 }
             }
         });
@@ -154,7 +90,7 @@ public class TambahDataActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         //Store date in string
-                        String tanggal = dayOfMonth + "/" + month + "/" + year;
+                        tanggal = dayOfMonth + "/" + month + "/" + year;
                         //Set date on plain text
                         tambahdata_calendar.setText(tanggal);
                     }
@@ -170,11 +106,62 @@ public class TambahDataActivity extends AppCompatActivity {
         tambahdata_saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //String jenis_hari = "";
-                String tanggal = tambahdata_calendar.getEditableText().toString().trim();
+
                 String keterangan = tambahdata_keterangan.getEditText().getText().toString().trim();
-                //int jumlah_jam = Integer.parseInt(tambahdata_jamLembur.getEditText().getText().toString().trim());
-                //int total_upah = Integer.parseInt("");
+                int jumlah_jam = Integer.parseInt(tambahdata_jamLembur.getEditText().getText().toString().trim());
+
+                //Pattern JUMLAH_JAM_PATTERN = Pattern.compile(String.valueOf(jumlah_jam > 0 | jumlah_jam <= 3));
+
+                //perhitungan total upah..
+                if (jumlah_jam > 0 || jumlah_jam <= 3) {
+                    gajiPerBulan = Integer.parseInt(tambahdata_gaji.getEditableText().toString().trim());
+                    gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
+
+                    if (jumlah_jam == 1) {
+                        total_upah = (int) (gajiPerJam * (double) 1.5);
+                    } else if (jumlah_jam == 2) {
+                        total_upah = (int) ((gajiPerJam * (double) 1.5) + (gajiPerJam * 2));
+                    } else if (jumlah_jam == 3) {
+                        total_upah = (int) ((gajiPerJam * (double) 1.5) + (gajiPerJam * 2));
+                    }
+
+                } else if (jumlah_jam >= 5 || jumlah_jam <= 8) {
+                    gajiPerBulan = R.id.tambahdata_gaji;
+                    gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
+
+                    if (jumlah_jam == 5) {
+                        total_upah = (int) (gajiPerJam * 5 * 2);
+                    } else if (jumlah_jam == 6) {
+                        total_upah = (int) ((gajiPerJam * 5 * 2) + (gajiPerJam * 3));
+                    } else if (jumlah_jam == 7 || jumlah_jam == 8) {
+                        total_upah = (int) ((gajiPerJam * 5 * 2) + (gajiPerJam * 4));
+                    }
+
+                } else if (jumlah_jam >= 8 || jumlah_jam <= 11) {
+                    gajiPerBulan = R.id.tambahdata_gaji;
+                    gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
+
+                    if (jumlah_jam == 8) {
+                        total_upah = (int) (gajiPerJam * 8 * 2);
+                    } else if (jumlah_jam == 9) {
+                        total_upah = (int) ((gajiPerJam * 8 * 2) + (gajiPerJam * 3));
+                    } else if (jumlah_jam == 10 || jumlah_jam == 11) {
+                        total_upah = (int) ((gajiPerJam * 8 * 2) + (gajiPerJam * 4));
+                    }
+
+                } else if (jumlah_jam >= 7 || jumlah_jam <= 10) {
+                    gajiPerBulan = R.id.tambahdata_gaji;
+                    gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
+
+                    if (jumlah_jam == 7) {
+                        total_upah = (int) (gajiPerJam * 7 * 2);
+                    } else if (jumlah_jam == 8) {
+                        total_upah = (int) ((gajiPerJam * 7 * 2) + (gajiPerJam * 3));
+                    } else if (jumlah_jam == 9 || jumlah_jam == 10) {
+                        total_upah = (int) ((gajiPerJam * 7 * 2) + (gajiPerJam * 4));
+                    }
+
+                }
 
                 Data temp = new Data(jenis_hari, tanggal, keterangan, jumlah_jam, total_upah);
                 postData(temp);
@@ -231,6 +218,7 @@ public class TambahDataActivity extends AppCompatActivity {
         tambahdata_keterangan = findViewById(R.id.tambahdata_keterangan);
         tambahdata_saveButton = findViewById(R.id.tambahdata_saveButton);
         jenis_hari = "";
+        tanggal = "";
         gajiPerJam = 0.0;
         gajiPerBulan = 0;
         total_upah = 0;
