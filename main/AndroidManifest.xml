@@ -3,6 +3,7 @@
     package="com.cahyaa.uas_2020_2_pt_lemburanku">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,20 +12,16 @@
         android:roundIcon="@mipmap/launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UAS_20202_PT_LemburanKu">
-        <activity android:name=".profile_page" />
-        <activity android:name=".login" />
-        <activity android:name=".register" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-        </activity>
-        <activity android:name=".about_us" />
+        <activity android:name=".BotnavActivity" />
+        <activity android:name=".DetaildataActivity" />
+        <activity android:name=".TambahDataActivity" />
         <activity android:name=".splash_screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
