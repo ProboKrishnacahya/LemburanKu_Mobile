@@ -41,37 +41,37 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
+            <EditText
+                android:id="@+id/tambahdata_gaji"
+                android:layout_width="237dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:ems="10"
+                android:fontFamily="@font/work_sans_medium"
+                android:inputType="textPersonName"
+                android:text="Masukkan Gaji Per Bulan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/work_sans_medium"
                 android:text="Jenis Hari Lembur:"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/work_sans_medium"
-                android:text="Tanggal Lembur"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tambahdata_jenisHari" />
+                app:layout_constraintTop_toBottomOf="@+id/tambahdata_gaji" />
 
             <RadioGroup
                 android:id="@+id/tambahdata_jenisHari"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
+                android:layout_marginStart="28dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView">
@@ -109,53 +109,60 @@
                     android:textSize="14sp" />
             </RadioGroup>
 
-            <ImageView
+            <EditText
                 android:id="@+id/tambahdata_calendar"
+                android:layout_width="255dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:fontFamily="@font/work_sans_medium"
+                android:inputType="textPersonName"
+                android:text="Masukkan Tanggal Lembur"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tambahdata_jenisHari" />
+
+            <ImageView
+                android:id="@+id/ImageView"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="6dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView2"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="@+id/textView2"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@+id/tambahdata_calendar"
+                app:layout_constraintTop_toTopOf="@+id/tambahdata_calendar"
                 app:srcCompat="@drawable/ic_baseline_edit_calendar_24" />
 
-            <Spinner
-                android:id="@+id/tambahdata_spinner"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tambahdata_jamLembur"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown"
+                android:layout_marginEnd="32dp"
+                app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintTop_toBottomOf="@+id/tambahdata_calendar">
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/work_sans_medium"
-                android:text="Jumlah Jam Lembur"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tambahdata_spinner"
-                app:layout_constraintStart_toStartOf="@+id/tambahdata_spinner"
-                app:layout_constraintTop_toTopOf="@+id/tambahdata_spinner" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/work_sans_medium"
+                    android:hint="Jam Lembur" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tambahdata_keterangan"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                app:errorEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tambahdata_spinner">
+                app:layout_constraintTop_toBottomOf="@+id/tambahdata_jamLembur">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -168,11 +175,12 @@
             <Button
                 android:id="@+id/tambahdata_saveButton"
                 android:layout_width="0dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="100dp"
-                android:layout_marginTop="250dp"
-                android:layout_marginEnd="100dp"
-                android:text="Save"
+                android:layout_height="58dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="160dp"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="@font/work_sans_medium"
+                android:text="Save Data"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
