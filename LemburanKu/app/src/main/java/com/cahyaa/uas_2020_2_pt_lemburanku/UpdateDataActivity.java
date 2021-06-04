@@ -181,7 +181,7 @@ public class UpdateDataActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         Intent intent = new Intent(getBaseContext(), BotnavActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        intent.getIntExtra("id", id);
+                        //intent.getIntExtra("id", id);
                         startActivity(intent);
                         Toast.makeText(getBaseContext(), "Data Updated", Toast.LENGTH_SHORT).show();
                         System.out.println(response);
@@ -202,7 +202,7 @@ public class UpdateDataActivity extends AppCompatActivity {
                 data.put("keterangan", temp.getKeterangan());
                 data.put("jumlah_jam", String.valueOf(temp.getJumlah_jam()));
                 data.put("total_upah", String.valueOf(temp.getTotal_upah()));
-                data.put("id", String.valueOf(temp.getId()));
+                data.put("id", String.valueOf(id));
                 return data;
             }
         };
