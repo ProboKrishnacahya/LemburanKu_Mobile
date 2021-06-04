@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -45,6 +46,11 @@ public class TambahDataActivity extends AppCompatActivity {
     private Double gajiPerJam;
     private int gajiPerBulan, total_upah;
 
+    Calendar calendar = Calendar.getInstance();
+    private final int year = calendar.get(Calendar.YEAR);
+    private final int month = calendar.get(Calendar.MONTH);
+    private final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,13 +83,6 @@ public class TambahDataActivity extends AppCompatActivity {
         });
 
         tambahdata_calendar.setOnClickListener(new View.OnClickListener() {
-
-            Calendar calendar = Calendar.getInstance();
-
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-            
             @Override
             public void onClick(View v) {
                 //Initialize date picker dialog
@@ -111,7 +110,7 @@ public class TambahDataActivity extends AppCompatActivity {
 
                 String keterangan = tambahdata_keterangan.getEditText().getText().toString().trim();
                 int jumlah_jam = Integer.parseInt(tambahdata_jamLembur.getEditText().getText().toString().trim());
-                String tanggal = tambahdata_calendar.getEditableText().toString().trim();
+                tanggal = tambahdata_calendar.getText().toString().trim();
 
                 //perhitungan total upah..
                 if (jumlah_jam > 0 && jumlah_jam <= 3) {

@@ -59,6 +59,7 @@ import model.Data;
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getBaseContext(), UpdateDataActivity.class);
+                    intent.putExtra("id", id);
                     startActivity(intent);
                 }
             });
@@ -66,13 +67,6 @@ import model.Data;
             detail_deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                String jenis_hari = detail_jenis_hari.getText().toString().trim();
-//                String tanggal = detail_tanggal.getText().toString().trim();
-//                String keterangan = detail_keterangan.getText().toString().trim();
-//                int jumlah_jam = Integer.parseInt(detail_jumlah_jam.getText().toString().trim());
-//                int total_upah = Integer.parseInt(detail_total_upah.getText().toString().trim());
-//                Data temp = new Data(jenis_hari, tanggal, keterangan, jumlah_jam, total_upah);
-
                     deleteData();
                 }
             });
@@ -108,41 +102,6 @@ import model.Data;
             );
 
             myQueue.add(request);
-        }
-
-        private void updateData(Data temp) {
-            String url = "http://192.168.1.6/exercise/lemburanku/UpdateData.php";
-            RequestQueue myRequest = Volley.newRequestQueue(this);
-
-            StringRequest request = new StringRequest(Request.Method.POST, url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            Intent intent = new Intent(getBaseContext(), BotnavActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                        }
-                    }
-            ){
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> data = new HashMap<>();
-                    data.replace("jenis_hari", temp.getJenis_hari());
-                    data.replace("tanggal", temp.getTanggal());
-                    data.replace("keterangan", temp.getKeterangan());
-                    data.replace("jumlah_jam", String.valueOf(temp.getJumlah_jam()));
-                    data.replace("total_upah", String.valueOf(temp.getTotal_upah()));
-                    return data;
-                }
-            };
-
-            myRequest.add(request);
         }
 
         private void getData() {

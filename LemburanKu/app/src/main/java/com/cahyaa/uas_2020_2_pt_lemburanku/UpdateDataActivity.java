@@ -3,6 +3,7 @@ package com.cahyaa.uas_2020_2_pt_lemburanku;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,14 +45,14 @@ public class UpdateDataActivity extends AppCompatActivity {
     private Button updatedata_saveButton;
     private String jenis_hari, tanggal;
     private Double gajiPerJam;
-    private int gajiPerBulan, total_upah, id;
+    private int gajiPerBulan, total_upah, jumlah_jam, id;
 
     Calendar calendar = Calendar.getInstance();
 
     int year = calendar.get(Calendar.YEAR);
     int month = calendar.get(Calendar.MONTH);
     int day = calendar.get(Calendar.DAY_OF_MONTH);
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +111,8 @@ public class UpdateDataActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String keterangan = updatedata_keterangan.getEditText().getText().toString().trim();
-                int jumlah_jam = Integer.parseInt(updatedata_jamLembur.getEditText().getText().toString().trim());
+                tanggal = updatedata_calendar.getText().toString().trim();
+                jumlah_jam = Integer.parseInt(updatedata_jamLembur.getEditText().getText().toString().trim());
 
                 //perhitungan total upah..
                 if (jumlah_jam > 0 && jumlah_jam <= 3) {
@@ -170,23 +173,18 @@ public class UpdateDataActivity extends AppCompatActivity {
 
     private void updateData(Data temp) {
         String url = "http://192.168.1.6/exercise/lemburanku/UpdateData.php";
-        RequestQueue myQueue = Volley.newRequestQueue(this);
+        RequestQueue myRequest = Volley.newRequestQueue(this);
 
-        JSONObject parameter = new JSONObject();
-        try {
-            parameter.put("id", id);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, parameter,
-                new Response.Listener<JSONObject>() {
+        StringRequest request = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(String response) {
                         Intent intent = new Intent(getBaseContext(), BotnavActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.getIntExtra("id", id);
                         startActivity(intent);
                         Toast.makeText(getBaseContext(), "Data Updated", Toast.LENGTH_SHORT).show();
+                        System.out.println(response);
                     }
                 },
                 new Response.ErrorListener() {
@@ -199,17 +197,17 @@ public class UpdateDataActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> data = new HashMap<>();
-                data.replace("jenis_hari", temp.getJenis_hari());
-                data.replace("tanggal", temp.getTanggal());
-                data.replace("keterangan", temp.getKeterangan());
-                data.replace("jumlah_jam", String.valueOf(temp.getJumlah_jam()));
-                data.replace("total_upah", String.valueOf(temp.getTotal_upah()));
-                data.replace("id", String.valueOf(temp.getId()));
+                data.put("jenis_hari", temp.getJenis_hari());
+                data.put("tanggal", temp.getTanggal());
+                data.put("keterangan", temp.getKeterangan());
+                data.put("jumlah_jam", String.valueOf(temp.getJumlah_jam()));
+                data.put("total_upah", String.valueOf(temp.getTotal_upah()));
+                data.put("id", String.valueOf(temp.getId()));
                 return data;
             }
         };
 
-        myQueue.add(request);
+        myRequest.add(request);
     }
 
     private void initView() {
@@ -228,6 +226,7 @@ public class UpdateDataActivity extends AppCompatActivity {
         tanggal = "";
         gajiPerJam = 0.0;
         gajiPerBulan = 0;
+        jumlah_jam = 0;
         total_upah = 0;
         Intent intent = getIntent();
         id = intent.getIntExtra("id", 0);
