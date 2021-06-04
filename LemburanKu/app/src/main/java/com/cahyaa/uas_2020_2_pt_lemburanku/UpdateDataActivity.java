@@ -75,9 +75,9 @@ public class UpdateDataActivity extends AppCompatActivity {
                 } else if (checkedId == R.id.updatedata_hariTerpendek) {
                     jenis_hari = "Hari libur terpendek";
                 } else if (checkedId == R.id.updatedata_hariLimaKerja) {
-                    jenis_hari = "Hari libur (5 hari kerja/minggu)";
+                    jenis_hari = "5 hari kerja/minggu";
                 } else if (checkedId == R.id.updatedata_hariEnamKerja) {
-                    jenis_hari = "Hari libur (6 hari kerja/minggu)";
+                    jenis_hari = "6 hari kerja/minggu";
                 }
             }
         });
@@ -91,7 +91,7 @@ public class UpdateDataActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         //Store date in string
-                        tanggal = dayOfMonth + "/" + month + "/" + year;
+                        tanggal = dayOfMonth + "-" + month + "-" + year;
                         //Set date on plain text
                         updatedata_calendar.setText(tanggal);
                     }
@@ -112,7 +112,7 @@ public class UpdateDataActivity extends AppCompatActivity {
                 int jumlah_jam = Integer.parseInt(updatedata_jamLembur.getEditText().getText().toString().trim());
 
                 //perhitungan total upah..
-                if (jumlah_jam > 0 || jumlah_jam <= 3) {
+                if (jumlah_jam > 0 && jumlah_jam <= 3) {
                     gajiPerBulan = Integer.parseInt(updatedata_gaji.getEditableText().toString().trim());
                     gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
 
@@ -124,8 +124,8 @@ public class UpdateDataActivity extends AppCompatActivity {
                         total_upah = (int) ((gajiPerJam * (double) 1.5) + (gajiPerJam * 2));
                     }
 
-                } else if (jumlah_jam >= 5 || jumlah_jam <= 8) {
-                    gajiPerBulan = R.id.updatedata_gaji;
+                } else if (jumlah_jam >= 5 && jumlah_jam <= 8) {
+                    gajiPerBulan = Integer.parseInt(updatedata_gaji.getEditableText().toString().trim());
                     gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
 
                     if (jumlah_jam == 5) {
@@ -136,8 +136,8 @@ public class UpdateDataActivity extends AppCompatActivity {
                         total_upah = (int) ((gajiPerJam * 5 * 2) + (gajiPerJam * 4));
                     }
 
-                } else if (jumlah_jam >= 8 || jumlah_jam <= 11) {
-                    gajiPerBulan = R.id.updatedata_gaji;
+                } else if (jumlah_jam >= 8 && jumlah_jam <= 11) {
+                    gajiPerBulan = Integer.parseInt(updatedata_gaji.getEditableText().toString().trim());
                     gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
 
                     if (jumlah_jam == 8) {
@@ -148,8 +148,8 @@ public class UpdateDataActivity extends AppCompatActivity {
                         total_upah = (int) ((gajiPerJam * 8 * 2) + (gajiPerJam * 4));
                     }
 
-                } else if (jumlah_jam >= 7 || jumlah_jam <= 10) {
-                    gajiPerBulan = R.id.updatedata_gaji;
+                } else if (jumlah_jam >= 7 && jumlah_jam <= 10) {
+                    gajiPerBulan = Integer.parseInt(updatedata_gaji.getEditableText().toString().trim());
                     gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
 
                     if (jumlah_jam == 7) {
@@ -199,12 +199,12 @@ public class UpdateDataActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> data = new HashMap<>();
-                data.put("jenis_hari", temp.getJenis_hari());
-                data.put("tanggal", temp.getTanggal());
-                data.put("keterangan", temp.getKeterangan());
-                data.put("jumlah_jam", String.valueOf(temp.getJumlah_jam()));
-                data.put("total_upah", String.valueOf(temp.getTotal_upah()));
-                data.put("id", String.valueOf(temp.getId()));
+                data.replace("jenis_hari", temp.getJenis_hari());
+                data.replace("tanggal", temp.getTanggal());
+                data.replace("keterangan", temp.getKeterangan());
+                data.replace("jumlah_jam", String.valueOf(temp.getJumlah_jam()));
+                data.replace("total_upah", String.valueOf(temp.getTotal_upah()));
+                data.replace("id", String.valueOf(temp.getId()));
                 return data;
             }
         };

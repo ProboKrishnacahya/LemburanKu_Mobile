@@ -1,5 +1,6 @@
 package com.cahyaa.uas_2020_2_pt_lemburanku;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -44,12 +45,6 @@ public class TambahDataActivity extends AppCompatActivity {
     private Double gajiPerJam;
     private int gajiPerBulan, total_upah;
 
-    Calendar calendar = Calendar.getInstance();
-
-    int year = calendar.get(Calendar.YEAR);
-    int month = calendar.get(Calendar.MONTH);
-    int day = calendar.get(Calendar.DAY_OF_MONTH);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,14 +69,21 @@ public class TambahDataActivity extends AppCompatActivity {
                 } else if (checkedId == R.id.tambahdata_hariTerpendek) {
                     jenis_hari = "Hari libur terpendek";
                 } else if (checkedId == R.id.tambahdata_hariLimaKerja) {
-                    jenis_hari = "Hari libur (5 hari kerja/minggu)";
+                    jenis_hari = "5 hari kerja/minggu";
                 } else if (checkedId == R.id.tambahdata_hariEnamKerja) {
-                    jenis_hari = "Hari libur (6 hari kerja/minggu)";
+                    jenis_hari = "6 hari kerja/minggu";
                 }
             }
         });
 
         tambahdata_calendar.setOnClickListener(new View.OnClickListener() {
+
+            Calendar calendar = Calendar.getInstance();
+
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            
             @Override
             public void onClick(View v) {
                 //Initialize date picker dialog
@@ -90,7 +92,7 @@ public class TambahDataActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         //Store date in string
-                        tanggal = dayOfMonth + "/" + month + "/" + year;
+                        tanggal = dayOfMonth + "-" + month + "-" + year;
                         //Set date on plain text
                         tambahdata_calendar.setText(tanggal);
                     }
@@ -109,11 +111,10 @@ public class TambahDataActivity extends AppCompatActivity {
 
                 String keterangan = tambahdata_keterangan.getEditText().getText().toString().trim();
                 int jumlah_jam = Integer.parseInt(tambahdata_jamLembur.getEditText().getText().toString().trim());
-
-                //Pattern JUMLAH_JAM_PATTERN = Pattern.compile(String.valueOf(jumlah_jam > 0 | jumlah_jam <= 3));
+                String tanggal = tambahdata_calendar.getEditableText().toString().trim();
 
                 //perhitungan total upah..
-                if (jumlah_jam > 0 || jumlah_jam <= 3) {
+                if (jumlah_jam > 0 && jumlah_jam <= 3) {
                     gajiPerBulan = Integer.parseInt(tambahdata_gaji.getEditableText().toString().trim());
                     gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
 
@@ -125,8 +126,8 @@ public class TambahDataActivity extends AppCompatActivity {
                         total_upah = (int) ((gajiPerJam * (double) 1.5) + (gajiPerJam * 2));
                     }
 
-                } else if (jumlah_jam >= 5 || jumlah_jam <= 8) {
-                    gajiPerBulan = R.id.tambahdata_gaji;
+                } else if (jumlah_jam >= 5 && jumlah_jam <= 8) {
+                    gajiPerBulan = Integer.parseInt(tambahdata_gaji.getEditableText().toString().trim());
                     gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
 
                     if (jumlah_jam == 5) {
@@ -137,8 +138,8 @@ public class TambahDataActivity extends AppCompatActivity {
                         total_upah = (int) ((gajiPerJam * 5 * 2) + (gajiPerJam * 4));
                     }
 
-                } else if (jumlah_jam >= 8 || jumlah_jam <= 11) {
-                    gajiPerBulan = R.id.tambahdata_gaji;
+                } else if (jumlah_jam >= 8 && jumlah_jam <= 11) {
+                    gajiPerBulan = Integer.parseInt(tambahdata_gaji.getEditableText().toString().trim());
                     gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
 
                     if (jumlah_jam == 8) {
@@ -149,8 +150,8 @@ public class TambahDataActivity extends AppCompatActivity {
                         total_upah = (int) ((gajiPerJam * 8 * 2) + (gajiPerJam * 4));
                     }
 
-                } else if (jumlah_jam >= 7 || jumlah_jam <= 10) {
-                    gajiPerBulan = R.id.tambahdata_gaji;
+                } else if (jumlah_jam >= 7 && jumlah_jam <= 10) {
+                    gajiPerBulan = Integer.parseInt(tambahdata_gaji.getEditableText().toString().trim());
                     gajiPerJam = ((double) 1 / 173) * gajiPerBulan;
 
                     if (jumlah_jam == 7) {

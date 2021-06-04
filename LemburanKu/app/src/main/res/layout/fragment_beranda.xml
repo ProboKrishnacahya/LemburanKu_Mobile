@@ -33,6 +33,7 @@
             android:id="@+id/main_noData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="500dp"
             android:fontFamily="@font/work_sans_medium"
             android:text="Belum ada data yang disimpan."
             android:textColor="@color/colorTextPrimary"

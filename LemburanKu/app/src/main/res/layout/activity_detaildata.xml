@@ -69,7 +69,7 @@
                         android:fontFamily="@font/titillium_web_bold"
                         android:text="Jenis Hari Lembur"
                         android:textColor="@color/colorTextPrimary"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,7 +81,7 @@
                         android:fontFamily="@font/titillium_web_bold"
                         android:text="Tanggal Lembur"
                         android:textColor="@color/colorTextPrimary"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="@+id/textView4"
                         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -93,7 +93,7 @@
                         android:fontFamily="@font/titillium_web_bold"
                         android:text="Jumlah Jam Lembur"
                         android:textColor="@color/colorTextPrimary"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="@+id/textView5"
                         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -105,7 +105,7 @@
                         android:fontFamily="@font/titillium_web_bold"
                         android:text="Keterangan"
                         android:textColor="@color/colorTextPrimary"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/textView8"
                         app:layout_constraintTop_toTopOf="@+id/detail_keterangan" />
@@ -118,7 +118,7 @@
                         android:fontFamily="@font/titillium_web_bold"
                         android:text="Total Gaji Lembur"
                         android:textColor="@color/colorTextPrimary"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="@+id/textView6"
                         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -127,7 +127,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/work_sans_medium"
+                        android:fontFamily="@font/titillium_web_bold"
                         android:text="Data"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="18sp"
@@ -139,7 +139,7 @@
                         android:id="@+id/detail_tanggal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/work_sans_medium"
+                        android:fontFamily="@font/titillium_web_bold"
                         android:text="Data"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="18sp"
@@ -150,7 +150,7 @@
                         android:id="@+id/detail_jumlah_jam"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/work_sans_medium"
+                        android:fontFamily="@font/titillium_web_bold"
                         android:text="Data"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="18sp"
@@ -164,7 +164,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="16dp"
-                        android:fontFamily="@font/work_sans_medium"
+                        android:fontFamily="@font/titillium_web_bold"
                         android:gravity="center|right"
                         android:text="Data Keterangan"
                         android:textAlignment="inherit"
@@ -179,13 +179,12 @@
                         android:id="@+id/detail_total_upah"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/work_sans_medium"
+                        android:fontFamily="@font/titillium_web_bold"
                         android:text="Data"
                         android:textColor="@color/colorTextPrimary"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="@+id/detail_jumlah_jam"
-                        app:layout_constraintTop_toBottomOf="@+id/detail_jumlah_jam" />
+                        app:layout_constraintTop_toTopOf="@+id/textView8" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

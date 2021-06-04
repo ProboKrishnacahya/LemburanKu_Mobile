@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,6 +36,7 @@ public class BerandaFragment extends Fragment implements OnCardClickBeranda {
     private ArrayList<Data> dataLembur;
     private LemburRVAdapter adapter;
     private FloatingActionButton main_FAB_addButton;
+    private TextView main_noData;
     private View view;
 
     @Override
@@ -59,6 +61,10 @@ public class BerandaFragment extends Fragment implements OnCardClickBeranda {
                     Data lemburBaru = data.getParcelableExtra("lemburBaru");
                     dataLembur.add(lemburBaru);
                     adapter.notifyDataSetChanged();
+
+                    if (!dataLembur.isEmpty()) {
+                        main_noData.setVisibility(View.GONE);
+                    }
                 }
             }
         }
@@ -121,6 +127,7 @@ public class BerandaFragment extends Fragment implements OnCardClickBeranda {
             dataLembur = new ArrayList<Data>();
             adapter = new LemburRVAdapter(dataLembur, this);
             main_FAB_addButton = view.findViewById(R.id.main_FAB_addButton);
+            main_noData = view.findViewById(R.id.main_noData);
         }
 
         @Override
