@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RumusFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".RumusFragment">
+
+        <ScrollView
+            android:id="@+id/rumus_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/rumus_textView_h1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="@font/titillium_web_bold"
+                    android:text="KEP. 102/MEN/VI/2004 Kemnaker"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/rumus_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:backgroundTint="?android:attr/statusBarColor"
+                    android:fontFamily="@font/titillium_web_bold"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="30dp"
+                    android:paddingBottom="15dp"
+                    android:text="Lihat Ketentuan"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="22sp"
+                    app:cornerRadius="50dp"
+                    app:layout_constraintEnd_toEndOf="@+id/rumus_textView_h1"
+                    app:layout_constraintStart_toStartOf="@+id/rumus_textView_h1"
+                    app:layout_constraintTop_toBottomOf="@+id/rumus_textView_h1" />
+
+                <View
+                    android:id="@+id/rumus_divider"
+                    android:layout_width="360dp"
+                    android:layout_height="2.5dp"
+                    android:layout_marginTop="40dp"
+                    android:background="?android:attr/listDivider"
+                    android:backgroundTint="?android:attr/statusBarColor"
+                    android:backgroundTintMode="add"
+                    app:layout_constraintEnd_toEndOf="@+id/rumus_button"
+                    app:layout_constraintStart_toStartOf="@+id/rumus_button"
+                    app:layout_constraintTop_toBottomOf="@+id/rumus_button" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="40dp"
+                    android:src="@drawable/ic_baseline_info_24"
+                    app:layout_constraintEnd_toEndOf="@+id/rumus_divider"
+                    app:layout_constraintStart_toStartOf="@+id/rumus_divider"
+                    app:layout_constraintTop_toBottomOf="@+id/rumus_divider"
+                    app:tint="@color/colorTextPrimary" />
+
+                <TextView
+                    android:id="@+id/rumus_textView_h2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/titillium_web_bold"
+                    android:text="Cara Perhitungan"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toStartOf="@+id/imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="40dp"
+                    app:cardBackgroundColor="@color/colorCard"
+                    app:cardCornerRadius="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rumus_textView_h2">
+
+                    <TextView
+                        android:id="@+id/rumus_textView_p1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/work_sans_medium"
+                        android:lineSpacingExtra="2.5sp"
+                        android:paddingLeft="30dp"
+                        android:paddingTop="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="30dp"
+                        android:text="Gaji Per Jam = 1 / 173 jam * Gaji Per Bulan\n\n1. Lembur Hari Kerja Biasa maksimal 1 s.d. 3 jam :\na. Jam ke-1 = 1,5 * Gaji Per Jam\nb. Jam ke-2, 3 = 2 * Gaji Per Jam\n\n2. Lembur Hari Libur (Hari Terpendek) maksimal 5 s.d. 8 jam :\na. Jam ke-5 = 5 * 2 * Gaji Per Jam\nb. Jam ke-6 = (5 * 2 * Gaji Per Jam) + (3 * Gaji Per Jam)\nc.  Jam ke-7, 8 = (5 * 2 * Gaji Per Jam) + (4 * Gaji Per Jam)\n\n3. Lembur Hari Libur (5 hari kerja/minggu) maksimal 8 s.d. 11 jam :\na. Jam ke-8 = 8 * 2 * Gaji Per Jam\nb. Jam ke-9 = (8 * 2 * Gaji Per Jam) + (3 * Gaji Per Jam)\nc.  Jam ke-10, 11 = (8 * 2 * Gaji Per Jam) + (4 * Gaji Per Jam)\n\n4. Lembur Hari Libur (6 hari kerja/minggu) maksimal 7 s.d. 10 jam :\na. Jam ke-7 = 7 * 2 * Gaji Per Jam\nb. Jam ke-8 = (7 * 2 * Gaji Per Jam) + (3 * Gaji Per Jam)\nc.  Jam ke-9, 10 = (7 * 2 * Gaji Per Jam) + (4 * Gaji Per Jam)"
+                        android:textColor="@color/colorTextPrimary"
+                        android:textSize="16sp" />
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
