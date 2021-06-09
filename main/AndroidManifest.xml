@@ -3,7 +3,6 @@
     package="com.cahyaa.uas_2020_2_pt_lemburanku">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.UAS_20202_PT_LemburanKu">
+        android:theme="@style/Theme.UAS_20202_PT_LemburanKu"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".CatatanActivity"></activity>
+        <activity android:name=".UpdateDataActivity" />
         <activity android:name=".BotnavActivity" />
         <activity android:name=".DetaildataActivity" />
         <activity android:name=".TambahDataActivity" />
