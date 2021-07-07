@@ -1,6 +1,4 @@
 # LemburanKu
-UAS 2020/2021-Genap Programming Techniques
-
 LemburanKu adalah aplikasi yang dapat menjadi solusi bagi pengguna untuk melakukan penghitungan sekaligus menyimpan data lembur Karyawan.
 
 Pengguna dapat menambahkan, mengubah, menampilkan, dan menghapus data tersebut berdasarkan informasi laporan lembur yang dimasukkan.
